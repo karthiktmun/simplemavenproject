@@ -27,8 +27,8 @@ steps:
     TargetFolder: '$(build.artifactstagingdirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '/home/vsts/work/1/s/webapp/target/'
-    ArtifactName: 'warfile'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'Warfile'
     publishLocation: 'Container'
 
 

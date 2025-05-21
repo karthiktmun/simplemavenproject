@@ -20,6 +20,11 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+- task: Bash@3
+- script: |
+          wget https://github.com/aquasecurity/trivy/releases/download/v0.19.2/trivy_0.19.2_Linux-64bit.deb
+          sudo dpkg -i trivy_0.19.2_Linux-64bit.deb
 - task: CopyFiles@2
   inputs:
     SourceFolder: '/home/vsts/work/1/s/webapp/target/'
@@ -31,7 +36,3 @@ steps:
     ArtifactName: 'Warfile'
     publishLocation: 'Container'
 
-- task: Bash@3
-- script: |
-          wget https://github.com/aquasecurity/trivy/releases/download/v0.19.2/trivy_0.19.2_Linux-64bit.deb
-          sudo dpkg -i trivy_0.19.2_Linux-64bit.deb

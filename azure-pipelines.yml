@@ -27,6 +27,8 @@ steps:
     script: |
         echo "hello"
         wget https://github.com/aquasecurity/trivy/releases/download/v0.19.2/trivy_0.19.2_Linux-64bit.deb
+        sudo dpkg -i trivy_0.19.2_Linux-64bit.deb
+
           
 - task: CopyFiles@2
   inputs:

@@ -32,9 +32,6 @@ steps:
     publishLocation: 'Container'
 
 - task: Bash@3
-      displayName: 'Install Trivy' 
-      inputs:
-        targetType: 'inline'
-        script: |
+- script: |
           wget https://github.com/aquasecurity/trivy/releases/download/v0.19.2/trivy_0.19.2_Linux-64bit.deb
           sudo dpkg -i trivy_0.19.2_Linux-64bit.deb

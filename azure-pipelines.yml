@@ -28,7 +28,7 @@ steps:
         echo "Installing OWASP Dependency Check"
         wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.1.6/dependency-check-6.1.6-release.zip
         unzip dependency-check-6.1.6-release.zip
-        
+    displayName: 'Install OWASP Dependency Check'
 
           
 - task: CopyFiles@2

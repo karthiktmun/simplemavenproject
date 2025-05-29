@@ -30,6 +30,13 @@ steps:
         unzip dependency-check-6.1.6-release.zip
     displayName: 'Install OWASP Dependency Check'
 
+- task: Bash@3 
+  inputs:
+    targetType: 'inline'
+    script: |
+        echo "Installing OWASP Dependency Check"
+        ./dependency-check/bin/dependency-check.sh --project "YourProjectName" --scan "$(Build.SourcesDirectory)/" --out "$(Build.ArtifactStagingDirectory)/dependency-check-report"
+            displayName: 'Run OWASP Dependency Check'
           
 - task: CopyFiles@2
   inputs:

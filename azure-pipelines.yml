@@ -34,10 +34,14 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-        echo "Installing OWASP Dependency Check"
-        ./dependency-check/bin/dependency-check.sh --project "YourProjectName" --scan "$(Build.SourcesDirectory)/" --out "$(Build.ArtifactStagingDirectory)/dependency-check-report"
-            displayName: 'Run OWASP Dependency Check'
-          
+          ./dependency-check/bin/dependency-check.sh \
+          --project "MyProject" \
+          --scan "$(System.DefaultWorkingDirectory)" \
+          --format "HTML" \
+          --out "$(System.DefaultWorkingDirectory)/odc-reports"
+
+
+  displayName: 'Run OWASP Dependency-Check'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '/home/vsts/work/1/s/webapp/target/'

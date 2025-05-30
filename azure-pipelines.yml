@@ -46,5 +46,5 @@ steps:
     targetType: 'inline'
     script: |
         echo Running Trivy Scan...
-        trivy image --format template --template "@trivy-reports.tpl" --output "$(Build.ArtifactStagingDirectory)/trivy-report.html" karthiktum/spring:latest
+        trivy image --output "$(Build.ArtifactStagingDirectory)/trivy-report.html" karthiktum/spring:latest
     displayName: 'Run Trivy Scan'

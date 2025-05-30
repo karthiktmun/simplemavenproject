@@ -46,11 +46,6 @@ steps:
     targetType: 'inline'
     script: |
         echo Running Trivy Scan...
-        trivy image --output "$(Build.ArtifactStagingDirectory)/trivy-report.html" karthiktum/spring:latest
+        trivy image karthiktum/spring:latest
     displayName: 'Run Trivy Scan'
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/trivy-report.html'
-    ArtifactName: 'TrivyReport'
-    publishLocation: 'Container'

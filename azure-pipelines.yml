@@ -33,3 +33,18 @@ steps:
     ArtifactName: 'Warfile'
     publishLocation: 'Container'
 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+        echo "Installing Trivy."
+        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+    displayName: 'Install Trivy'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+        echo Running Trivy Scan...
+        trivy image --format template --template "@trivy-reports.tpl" --output "$(Build.ArtifactStagingDirectory)/trivy-report.html" karthiktum/spring:latest
+    displayName: 'Run Trivy Scan'

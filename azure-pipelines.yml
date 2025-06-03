@@ -28,4 +28,4 @@ steps:
     TargetFolder: '$(build.artifactstagingdirectory)'
 
 - script: |
-          mvn verify package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=azuredsodevsecops -Dsonar.projectKey=azuredevsecopsprojectkey -Dsonar.login=ec4c8c31a8e63d8efe3952367ba81b08faad073c
+          mvn verify package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=azuredsodevsecops -Dsonar.projectKey=azuredevsecopsprojectkey -Dsonar.token=ec4c8c31a8e63d8efe3952367ba81b08faad073c

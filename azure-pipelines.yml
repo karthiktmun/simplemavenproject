@@ -21,12 +21,6 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: dependency-check-build-task@6
-  inputs:
-    projectName: 'karthiktmun.simplemavenproject'
-    scanPath: 'pom.xml'
-    format: 'HTML'
-    uploadReports: true
 - task: CopyFiles@2
   inputs:
     SourceFolder: '/home/vsts/work/1/s/webapp/target/'

@@ -27,13 +27,5 @@ steps:
     Contents: 'webapp.war'
     TargetFolder: '$(build.artifactstagingdirectory)'
 
-- task: Docker@2
-  inputs:
-    containerRegistry: 'dock2'
-    command: 'login'
-- task: Docker@2
-  inputs:
-    containerRegistry: 'dock2'
-    repository: 'karthiktum/azuredso'
-    command: 'buildAndPush'
-    Dockerfile: '**/AzureDockerfile'
+- script: |
+          mvn verify package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=azuredsodevsecops -Dsonar.projectKey=azuredevsecopsprojectkey -Dsonar.login=ec4c8c31a8e63d8efe3952367ba81b08faad073c

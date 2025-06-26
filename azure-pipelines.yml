@@ -30,3 +30,7 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'Warfile'
     publishLocation: 'Container'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dock2'
+    command: 'login'

@@ -21,25 +21,12 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: Bash@3
+- task: dependency-check-build-task@6
   inputs:
-    targetType: 'inline'
-    script: |
-        echo "Installing OWASP Dependency Check"
-        wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.1.6/dependency-check-6.1.6-release.zip
-        unzip dependency-check-6.1.6-release.zip
-  displayName: 'Install OWASP Dependency Check'
-
-- task: Bash@3 
-  inputs:
-    targetType: 'inline'
-    script: |
-          ./dependency-check/bin/dependency-check.sh \
-          --project "MyProject" \
-          --scan "$(System.DefaultWorkingDirectory)" \
-          --format "HTML" \
-          --out "$(System.DefaultWorkingDirectory)/odc-reports"
-  displayName: 'Run OWASP Dependency-Check'
+    projectName: 'karthiktmun.simplemavenproject'
+    scanPath: 'pom.xml'
+    format: 'HTML'
+    uploadReports: true
 
 - task: CopyFiles@2
   inputs:

@@ -68,3 +68,22 @@ steps:
         echo Running Trivy Scan...
         trivy image karthiktum/azuredso:123
   displayName: 'Run Trivy Scan'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+        echo "Installing OWASP Dependency Check"
+        wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.1.6/dependency-check-6.1.6-release.zip
+        unzip dependency-check-6.1.6-release.zip
+    displayName: 'Install OWASP Dependency Check'
+
+- task: Bash@3 
+  inputs:
+    targetType: 'inline'
+    script: |
+          ./dependency-check/bin/dependency-check.sh \
+          --project "MyProject" \
+          --scan "$(System.DefaultWorkingDirectory)" \
+          --format "HTML" \
+          --out "$(System.DefaultWorkingDirectory)/odc-reports"

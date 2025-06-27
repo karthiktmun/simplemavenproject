@@ -66,5 +66,5 @@ steps:
     targetType: 'inline'
     script: |
         echo Running Trivy Scan...
-        trivy image karthiktum/azuredso:latest
+        trivy image karthiktum/azuredso
   displayName: 'Run Trivy Scan'
